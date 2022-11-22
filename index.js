@@ -18,20 +18,28 @@ const { Socket } = require('dgram');
 // const MessageModel = require("../models/Messages");
 
 // connect to mongodb
-mongoose.connect(MONGO_URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    user: 'Zalo',
-    pass: 'ZaloAdminPassword',
-    dbName: 'Zalo',
-    useFindAndModify: false
-})
-    .then(res => {
-        console.log("connected to mongodb");
-    })
-    .catch(err => {
-        console.log(err);
-    })
+
+mongoose.connect(MONGO_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) => {
+        console.log(`errors: ${err}`)}
+    );
+
+// mongoose.connect(MONGO_URI, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+//     // user: 'Zalo',
+//     // pass: 'ZaloAdminPassword',
+//     // dbName: 'Zalo',
+//     useFindAndModify: false
+// })
+//     .then(res => {
+//         console.log("connected to mongodb");
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
 
 // use middleware to parse body req to json
 
